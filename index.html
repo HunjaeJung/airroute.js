@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>에어라우트</title>
+		<script src="./browser.js"></script>
+    <script type="text/javascript" src="./code-snippet.js"></script>
+    <script type="text/javascript" src="./app-loader.js"></script>
+    <script>
+    var loader = new tui.component.m.AppLoader();
+    loader.exec({
+         ios: {
+             scheme: 'fecheck://', // iphone app scheme
+             url: 'itms-apps://itunes.apple.com/app/.....', // app store url,
+             useIOS9: true,
+             universalLink: 'app:///links/'
+         },
+         android: {
+             scheme: 'intent://home#Intent;scheme=fecheck;package=com.fecheck;end' // android intent uri
+         },
+         timerSet: {
+             ios: {
+                 short: 2000,
+                 long: 3000
+             },
+             and: 500
+         },
+         notFoundCallback: function(storeUrl) { // Not found in IOS
+             //storeUrl: 'itms-apps://itunes.apple.com/app/.....'
+             alert('application - not found');
+         },
+         etcCallback: function() {
+             alert('etc environment - not supported');
+         }
+    });
+    </script>
+	</head>
+	<body>
+		<h2>AIRROUTE</h2>
+		<button id="button-180">AIRROUTE 180</button>
+		<div id="desc"></div>
+	</body>
+</html>
